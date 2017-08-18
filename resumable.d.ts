@@ -80,7 +80,7 @@ declare module Resumable  {
     /**
      * Extra headers to include in the multipart POST with data. This can be an object or a function that allows you to construct and return a value, based on supplied file (Default: {})
      **/
-    headers?: Object | ((file) => Object);
+    headers?: Object | ((file: any) => Object);
     /**
      * Method to use when POSTing chunks to the server (multipart or octet) (Default: multipart)
      **/
@@ -108,7 +108,7 @@ declare module Resumable  {
     /**
      * A function which displays the please upload n file(s) at a time message. (Default: displays an alert box with the message Please n one file(s) at a time.)
      **/
-    maxFilesErrorCallback?: (files, errorCount) => void;
+    maxFilesErrorCallback?: (files: ResumableFile[], errorCount: number) => void;
     /**
      * The minimum allowed file size. (Default: undefined)
      **/
@@ -116,7 +116,7 @@ declare module Resumable  {
     /**
      * A function which displays an error a selected file is smaller than allowed. (Default: displays an alert for every bad file.)
      **/
-    minFileSizeErrorCallback?:(file, errorCount) => void;
+    minFileSizeErrorCallback?:(file: ResumableFile, errorCount: number) => void;
     /**
      * The maximum allowed file size. (Default: undefined)
      **/
@@ -124,7 +124,7 @@ declare module Resumable  {
     /**
      * A function which displays an error a selected file is larger than allowed. (Default: displays an alert for every bad file.)
      **/
-    maxFileSizeErrorCallback?: (file, errorCount) => void;
+    maxFileSizeErrorCallback?: (file: ResumableFile, errorCount: number) => void;
     /**
      * The file types allowed to upload. An empty array allow any file type. (Default: [])
      **/
@@ -226,7 +226,7 @@ declare module Resumable  {
     /**
      *  A specific file was completed.
      **/
-    on(event: 'fileSuccess', callback: (file: ResumableFile) => void); void;
+    on(event: 'fileSuccess', callback: (file: ResumableFile) => void): void;
     /**
      *  Uploading progressed for a specific file.
      **/
@@ -282,7 +282,7 @@ declare module Resumable  {
     /**
      *  Show progress in file preparation
      **/
-    on(event: 'chunkingProgress', callback: (file: ResumableFile, ratio) => void): void;
+    on(event: 'chunkingProgress', callback: (file: ResumableFile, ratio: number) => void): void;
     /**
      *  File is ready for upload
      **/
@@ -290,7 +290,7 @@ declare module Resumable  {
     /**
      * Listen to all the events listed above with the same callback function.
      **/
-    on(event: 'catchAll', callback: () => void);
+    on(event: 'catchAll', callback: () => void): void;
   }
 
   export interface ResumableFile {
