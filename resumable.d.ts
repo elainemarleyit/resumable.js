@@ -132,7 +132,7 @@ declare module Resumable  {
     /**
      * A function which displays an error a selected file has type not allowed. (Default: displays an alert for every bad file.)
      **/
-    fileTypeErrorCallback?: (file, errorCount) => void;
+    fileTypeErrorCallback?: (file ResumableFile, errorCount: number) => void;
     /**
      * The maximum number of retries for a chunk before the upload is failed. Valid values are any positive integer and undefined for no limit. (Default: undefined)
      **/
